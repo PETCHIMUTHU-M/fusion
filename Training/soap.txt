@@ -1,0 +1,7 @@
+aGS8b%5?
+
+Service WSDL URL: https://fa-etaj-saasfademo1.ds-fa.oraclepdemos.com//fscmService/PurchaseOrderServiceV2?WSDL
+
+Service WSDL URL: https://fa-etaj-saasfademo1.ds-fa.oraclepdemos.com/fscmService/InvoiceInterfaceService?WSDL
+
+Service WSDL URL: https://fa-etaj-saasfademo1.ds-fa.oraclepdemos.com/fscmService/SupplierServiceV2?WSDL

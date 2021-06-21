@@ -1,0 +1,6 @@
+Master - details Event
+	Channel 1 - TEST3
+	Channel 2 - TEST2
+	
+Action Links
+	Presentation variable - SUPP_VAR

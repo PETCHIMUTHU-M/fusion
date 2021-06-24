@@ -1,0 +1,53 @@
+select a.order_number,
+to_char(a.creation_date,'dd-mon-yyyy'),
+b.account_name,
+b.account_number,
+c.email_address
+
+from doo_headers_all a,
+hz_cust_accounts b,
+hz_parties c
+
+where a.sold_to_customer_id = b.cust_account_id
+and b.account_name = c.party_name
+
+and a.order_number in (65352,65376)
+AND C.EMAIL_ADDRESS IN ('john.lee_esfd-dev30@oraclepdemos.com','mary.whitaker_esfd-dev30@oraclepdemos.com')
+
+
+=======================================
+
+SELECT 
+A.ORDER_NUMBER AS KEY,
+'TASK5' AS TEMPLATE,
+'RTF' TEMPLATE_FORMAT,
+'EN-US' LOCALE,
+'PDF' OUTPUT_FORMAT,
+'EMAIL' DEL_CHANNEL,
+'ORDER_NUMBER_'||A.ORDER_NUMBER OUTPUT_NAME,
+C.EMAIL_ADDRESS PARAMETER1,
+'PETCHIMUTHU.MAHARAJAN@CHAINSYS.COM' PARAMETER2,
+'HARINIROOPA5@GMAIL.COM' PARAMETER3,
+'REG TASK5' PARAMETER4,
+'HAI MAIL FROM ROOPA CHAINSYS' PARAMETER5,
+'true'  PARAMETER6
+from doo_headers_all a,
+hz_cust_accounts b,
+hz_parties c
+where a.sold_to_customer_id = b.cust_account_id
+and b.account_name = c.party_name
+and a.order_number in (65352,65376)
+AND C.EMAIL_ADDRESS IN ('john.lee_esfd-dev30@oraclepdemos.com','mary.whitaker_esfd-dev30@oraclepdemos.com')
+
+
+
+================     
+
+
+CONTACT@GMAIL.COM
+john.lee_esfd-dev30@oraclepdemos.com
+65352
+
+CONTACT@GMAIL.COM
+mary.whitaker_esfd-dev30@oraclepdemos.com
+65376

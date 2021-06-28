@@ -1,0 +1,36 @@
+Security Console
+
+Who can do What and can access Which set of data
+
+Who	
+	user
+	manager
+	
+What
+	create
+	post
+	run
+	
+Which
+	ledger
+	business unit
+	
+Overview
+	Role Based Access Control (RBAC)
+		job role
+			duty role
+			privileges
+		abstract role
+		duty role
+		data role
+	Function Security
+	Data Security
+	Privacy
+	Access provisioning and identity management
+	Segregation of duties policies
+	Enforcement across tools, technologies, data transformation, and access methods
+	Enforcement across the information life cycle
+	
+Navigator --> Tools --> Security Console
+	
+	

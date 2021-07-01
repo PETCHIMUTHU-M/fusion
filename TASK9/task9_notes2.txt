@@ -1,0 +1,5 @@
+<?for-each-group@section:G_1;./CUST?>
+
+<?if:position() mod 30 =0?> <xsl:attribute name="break-before">page</xsl:attribute> 
+<?end if?>
+<?end for-each?>

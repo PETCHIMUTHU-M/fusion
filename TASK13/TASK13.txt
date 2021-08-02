@@ -150,7 +150,7 @@ Customer/OM/AR :
 			  GROUP BY A.PARTY_NAME, 
 			  D.SALES_ORDER
 
-7.  Build a query to get AR Invoices Due date more than 50 days
+7.  Build a query to get AR Invoices Due date more than 50 days - AR PAYMENT SCHEDULES ALL
 
 8.  Build a query to get the AR Invoice details with the following bucket details
 

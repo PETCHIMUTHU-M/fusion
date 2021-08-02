@@ -1,0 +1,90 @@
+SELECT(1)
+COLUMNS(1)
+SELECT(15) FROM(15)
+FROM(19)
+	SELECT(21)
+	COLUMNS(21)
+	FROM(56)
+		SELECT(58)
+		COLUMNS
+		(SELECT(63) COLUMNS FROM(64))
+		(SELECT(72) COLUMNS FROM(73))
+		(SELECT(80) COLUMNS FROM(81))
+		COLUMNS
+		FROM(128)
+			SELECT(130)
+			COLUMNS
+			FROM(237)
+				SELECT(239)
+				COLUMNS
+				(SELECT(288) COLUMNS FROM(288))
+				(SELECT(303) COLUMNS FROM(304))
+				FROM(315)
+					SELECT(315)
+					COLUMNS
+					FROM(326)
+						SELECT(326)
+						COLUMNS
+						FROM(332)
+						UNION ALL
+						SELECT(345)
+						COLUMNS
+						FROM(350)
+					TABLES(362)
+					WHERE(371)
+						SELECT(401)
+						FROM(401)
+							SELECT(402)
+								SELECT(403) FROM(403)
+								SELECT(404) FROM(404)
+								SELECT(405) FROM(406)
+								WHERE(408)
+									SELECT(415) FROM(416)
+									WHERE(418)
+									SELECT(425) FROM(426)
+									WHERE(428)
+							COLUMNS(435)
+							FROM(457)
+								SELECT(458)
+								COLUMNS(458)
+								FROM(496)
+									SELECT(497)
+									COLUMNS(497)
+									FROM(545)
+										SELECT(545)
+										COLUMNS(545)
+										FROM(556)
+											SELECT(556)
+											COLUMNS(556)
+											FROM(562)
+											WHERE(563)
+											UNION ALL(574)
+											SELECT(575)
+											FROM(580)
+											WHERE(581)
+									TABLES(594)									
+									WHERE(600)
+								WHERE(618)
+							WHERE(619)
+			GROUP BY(628)					
+		GROUP BY(632)		
+	WHERE(637)
+	GROUP BY(640)
+GROUP BY(644)	
+		
+		
+		
+		
+P_BU
+P_Company_To
+P_Invoive_Number
+P_TO_COA
+P_AS_OF_DATE
+P_Aging_Type
+P_Revaluation_Period
+P_Invoice_Type
+P_Supplier
+P_Company_From
+P_Invoice_Currency_Code
+P_FROM_COA
+P_Legal_Entity

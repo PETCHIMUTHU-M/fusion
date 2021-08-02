@@ -1,0 +1,42 @@
+HAOU
+	+ NAME
+HP
+	+ PARTY_NAME
+	+ PARTY_NUMBER
+RCTA
+	+ TRX_NUMBER
+	+ TRX_DATE
+	+ GL_DATE
+	+ SOLD_TO_PARTY_ID
+RPSA
+	+ DUE_DATE
+	+ DUE_AMOUNT_ORIGINAL
+	+ DUE_AMOUNT_REMAINING
+AGING
+	
+
+
+
+
+
+
+
+1- RA_CUSTOMER_TRX_ALL
+
+2- RA_CUSTOMER_TRX_LINES_ALL
+
+3- RA_CUST_TRX_LINE_GL_DIST_ALL
+
+4- AR_PAYMENT_SCHEDULES_ALL
+
+5- AR_RECEIVABLES_TRX_ALL
+
+6- AR_RECEIVABLE_APPLICATIONS_ALL
+
+
+a.trx_number,a.trx_date,b.customer_name,b.customer_number,a.amount_due_original,a.amount_due_remaining,a.amount_applied from
+ar_payment_schedules_all a
+ra_customers b
+where a.customer_id=b.customer_id
+and trx_number=<Give Inv Number>
+

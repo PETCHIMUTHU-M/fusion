@@ -1,0 +1,207 @@
+--Fixed Asset
+
+SELECT DISTINCT TO_CHAR(fab.asset_number) 
+                asset_num, 
+                ftl.description 
+                descp, 
+                fdh.book_type_code 
+                book_t_c, 
+                fab.tag_number 
+                tag_num, 
+                fab.manufacturer_name 
+                manf_name, 
+                fab.serial_number 
+                serial_num, 
+                fab.model_number 
+                model_num, 
+                fab.asset_type 
+                asset_type, 
+                fb.cost 
+                FA_cost, 
+                ( fb.cost * fdh.units_assigned ) / fab.current_units 
+                unit_distribution_cost, 
+                To_char(fb.date_placed_in_service, 'DD-MM-YYYY') 
+                date_p_in_s, 
+                fab.current_units 
+                FA_units, 
+                fdh.units_assigned, 
+                fak.segment1 
+                asset_key_seg1, 
+                fak.segment2 
+                asset_key_seg2, 
+                fak.segment3 
+                asset_key_seg3, 
+                fak.segment4 
+                asset_key_seg4, 
+                fak.segment5 
+                asset_key_seg5, 
+                fak.segment6 
+                asset_key_seg6, 
+                fak.segment7 
+                asset_key_seg7, 
+                fac.segment1 
+                category_seg1, 
+                To_char(fac.segment2) 
+                category_seg2, 
+                To_char(fac.segment3) 
+                category_seg3, 
+                fac.segment4 
+                category_seg4, 
+                fac.segment5 
+                category_seg5, 
+                fac.segment6 
+                category_seg6, 
+                fac.segment7 
+                category_seg7, 
+                fab.in_use_flag 
+                in_use_flag, 
+                fal.segment1 
+                location_seg1, 
+                fal.segment2 
+                location_seg2, 
+                fal.segment3 
+                location_seg3, 
+                fal.segment4 
+                location_seg4, 
+                fal.segment5 
+                location_seg5, 
+                fal.segment6 
+                location_seg6, 
+                fal.segment7 
+                location_seg7, 
+                gl.segment1 
+                deprn_exp_seg1, 
+                gl.segment2 
+                deprn_exp_seg2, 
+                gl.segment3 
+                deprn_exp_seg3, 
+                gl.segment4 
+                deprn_exp_seg4, 
+                gl.segment5 
+                deprn_exp_seg5, 
+                gl.segment6 
+                deprn_exp_seg6, 
+                gl.segment7 
+                deprn_exp_seg7, 
+                fb.depreciate_flag 
+                depreciate_flag, 
+                fb.nbv_at_switch 
+                nbv_at_switch, 
+                (SELECT method_code 
+                 FROM   fa_methods 
+                 WHERE  method_id = fb.method_id) 
+                method_id, 
+                (SELECT prorate_convention_code 
+                 FROM   fa_convention_types 
+                 WHERE  convention_type_id = fb.convention_type_id) 
+                prorate_con_code, 
+                fab.inventorial 
+                inventorial, 
+                fab.owned_leased 
+                owned_leased, 
+                fab.new_used 
+                new_used, 
+                Decode(fth.amortization_start_date, NULL, 'NO', 
+                                                    'YES') 
+                amortize_flag, 
+                To_char(fth.amortization_start_date, 'DD-MM-YYYY') 
+                amortiz_start_date, 
+                fb.salvage_type 
+                salvage_type, 
+                fb.salvage_value 
+                salvage_val, 
+                fb.percent_salvage_value 
+                per_salvage_value, 
+                Nvl(fds.ytd_deprn, 0) - Nvl(fds.system_deprn_amount, 0) 
+                ytd_deprn, 
+                Nvl(fds.deprn_reserve, 0) - Nvl(fds.system_deprn_amount, 0) 
+                deprn_res, 
+                fds.bonus_ytd_deprn 
+                bonus_ytd_deprn, 
+                fds.bonus_deprn_reserve 
+                bonus_deprn_res, 
+                fds.ytd_impairment 
+                ytd_impairment, 
+                fds.impairment_reserve 
+                impairment_reser, 
+                (SELECT life_in_months 
+                 FROM   fa_methods 
+                 WHERE  method_id = fb.method_id) 
+                life_in_mon, 
+                (SELECT ffr.basic_rate 
+                 FROM   fa_flat_rates ffr 
+                 WHERE  ffr.flat_rate_id = fb.flat_rate_id) 
+                basic_rate, 
+                (SELECT ffr.adjusted_rate 
+                 FROM   fa_flat_rates ffr 
+                 WHERE  ffr.flat_rate_id = fb.flat_rate_id) 
+                adjusted_rate, 
+                fb.unit_of_measure                                          UOM, 
+                fb.production_capacity 
+                prod_capacity, 
+                fb.ceiling_type_id 
+                ceiling_type_id, 
+                fb.bonus_rule_id 
+                bonus_rule_id, 
+                fb.cash_generating_unit_id 
+                cash_gen_unit_id, 
+                fb.deprn_limit_type 
+                deprn_limit_type, 
+                fb.allowed_deprn_limit 
+                allowed_deprn_limit, 
+                fb.allowed_deprn_limit_amount 
+                allowed_deprn_limit_amt, 
+                (SELECT asset_number 
+                 FROM   fa_additions_b FAB2 
+                 WHERE  fab2.asset_id = fab.parent_asset_id 
+                        AND ROWNUM = 1) 
+                "PARENT ASSET ID", 
+                fai.project_task_number "TASK NUMBER", 
+                fai.project_number "PROJECT NUMBER", 
+                fab.attribute5 
+                "CUSTODIAN DEPT", 
+                fab.created_by ,
+				fab.Attribute1,
+				fab.Attribute2,
+				fab.Attribute3,
+				fab.Attribute4,
+				fab.Attribute5
+FROM   fa_additions_b fab, 
+       fa_additions_tl ftl, 
+       fa_categories_b fac, 
+       fa_category_books fcb, 
+       fa_books fb, 
+       fa_book_controls fbc, 
+       fa_deprn_summary fds, 
+       fa_transaction_headers fth, 
+       fa_locations fal, 
+       gl_code_combinations gl, 
+       fa_distribution_history fdh, 
+       fa_asset_keywords fak,
+	   fa_asset_invoices FAI 
+WHERE  --1=1 AND fab.ASSET_NUMBER  ='163.SW008:16' AND 
+  ftl.asset_id = fab.asset_id 
+  AND ftl.LANGUAGE = 'US' 
+  AND fab.asset_id = fb.asset_id 
+  AND fbc.book_type_code = fb.book_type_code 
+  AND fab.asset_category_id = fac.category_id (+) 
+  AND fac.category_id = fcb.category_id (+) 
+  AND fb.book_type_code = fcb.book_type_code (+) 
+  AND fcb.book_type_code = fds.book_type_code (+) 
+  AND fab.asset_id = fds.asset_id (+) 
+  AND fab.asset_id = fth.asset_id (+) 
+  AND fth.book_type_code = fb.book_type_code (+) 
+  AND fal.location_id = fdh.location_id 
+  AND fdh.code_combination_id = gl.code_combination_id 
+  AND fdh.asset_id = fab.asset_id 
+  AND fbc.book_type_code = fdh.book_type_code 
+  AND fab.asset_key_ccid = fak.code_combination_id(+) 
+  AND fdh.book_type_code in (:Books )
+  AND fab.created_by = 'attuvar1@globalpsa.com' 
+  AND fth.transaction_type_code IN ( 'ADDITION', 'CIP ADDITION' ) 
+  AND fai.asset_id = fab.asset_id
+--order by  fab.asset_number
+
+--Lookup
+
+select distinct book_type_code from fa_books order by 1

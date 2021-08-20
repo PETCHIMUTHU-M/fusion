@@ -494,7 +494,7 @@ sum(REMAINING_AMOUNT-nvl(ARK_INVOICE_PAYMENT_TOTAL,0)) over (partition by INVOIC
 End) as Running_Total,Invoice_Currency_Code,Payment_Term,Description,Pre_payment,Liability_ID,Retention_Amount,Exchange_Rate_TPE,Invoice_Id
 
 From (
-SELECT  distinct  HAOT.NAME                      BUSINESS_UNIT,AIA.Invoice_Id,
+SELECT  distinct  HAOT.NAME BUSINESS_UNIT,AIA.Invoice_Id,
          NVL(POZ.VENDOR_NAME, (SELECT PARTY_NAME FROM HZ_PARTIES HP WHERE HP.PARTY_ID = AIA.PARTY_ID)) AS SUPPLIER_NAME,
             POZ.SEGMENT1 AS SUPPLIER_NUMBER,
            POZ.VENDOR_TYPE_LOOKUP_CODE AS SUPPLIER_TYPE,

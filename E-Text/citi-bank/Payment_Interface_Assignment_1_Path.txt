@@ -1,0 +1,45 @@
+For CBFT (EFT)
+==============
+WithData
+========
+BankAccount/BankAddress/Country --> MY
+BankAccount/BankAccountNumber --> 111111111
+PaymentAmount/Currency/Code--> MYR
+PaymentAmount/Value --> 16064.04
+PaymentDate --> 2021-07-12
+PaymentNumber/CheckNumber --> 10002
+PayeeBankAccount/BankAccountName --> SYNTECH CHEMICALS PTE LTD
+SupplierorParty/Address/AddressLine1 --> 2A SECOND CHIN BEE ROAD
+SupplierorParty/Address/AddressLine2 --> Unit Number and Building Name
+PayeeBankAccount/BankAccountNumber --> 0020253704
+PayeeBankAccount/BankName --> DBS BANK LTD
+PayeeBankAccount/SwiftCdoe --> DBSSSGSGXXX
+DocumentNumber/ReferenceNumber --> VV12301
+BankCharges/BankChargeBearer/Code --> BEN
+SupplierorParty/Name --> SYNTECH CHEMICALS PTE LTD
+Payee/RemitAdviceEmail --> enquiry.sgpayments@the-ascott.com
+DocumentDate --> 2021-06-28
+TotalDocumentAmount/Value --> 788.67
+TotalDocumentAmount/Currency/Code --> MYR
+
+
+WithoutData
+===========
+DocumentPayable/SrcDocDescriptiveFlexField/Attribute3
+AlternateBankAccountName
+SupplierorParty/Address/AddressLine3
+PayeeBankAccount/BankAddress/AddressLine1
+PayeeBankAccount/BankAddress/AddressLine2
+PayeeBankAccount/BankAddress/City||Country||PostalCode
+BankInstruction/BankInstructionCode
+
+
+
+Substr(DocumentNumber/ReferenceNumber||’~’||DocumentDate||’~’||TotalDocumentAmount/Value||’~’||TotalDocumentAmount/Currency/Code||’~’||PaymentAmount/Value||’~’||PaymentAmount/Currency/Code,1,75)
+
+Rtrim(Round(Substr(Sum(PaymentAmount/Value),1,21),2),' ')
+
+RTRIM(REPLACE(ROUND(Substr(sum(PaymentAmount/Value),1,21),2),’ ’,’0’),'0')
+
+0004454530000
+4454530000

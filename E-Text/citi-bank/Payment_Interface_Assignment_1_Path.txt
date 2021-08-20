@@ -39,7 +39,21 @@ Substr(DocumentNumber/ReferenceNumber||’~’||DocumentDate||’~’||TotalDocu
 
 Rtrim(Round(Substr(Sum(PaymentAmount/Value),1,21),2),' ')
 
-RTRIM(REPLACE(ROUND(Substr(sum(PaymentAmount/Value),1,21),2),’ ’,’0’),'0')
+RTRIM(REPLACE(ROUND(Substr(PaymentAmount/Value,1,21),2),’ ’,’0’),'0')
 
-0004454530000
-4454530000
+REPLACE(REPLACE(REPLACE(Substr(PayeeBankAccount/BankAccountName,1,35),'@',' '),'$',' '),'#',' ')
+
+
+select substr(‘enquiry.CNpayments@the-ascott.com’,1,(instr(‘enquiry.CNpayments@the-ascott.com’,'@'))-1) from dual; ---- Account name
+
+select substr(Substr(Payee/RemitAdviceEmail,1,50),(instr(Substr(Payee/RemitAdviceEmail,1,50),'@'))+1) from dual; ------ Domain name
+
+N   B
+N   P
+O   B
+O   P
+O   D
+N   D
+
+
+

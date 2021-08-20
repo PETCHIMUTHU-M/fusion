@@ -1,0 +1,25 @@
+H662HDDMM.001662H                
+P24/02/2021                     R0000200000000000001068.0063007
+IN20000428        INK STATION                                  22, Main Road FC Road Pune Maharashtra 411043                    
+
+
+
+
+BankAccount/BankAccountSuffix --> 662H
+DDMM
+TAL_IN_HDFC_NEFT_SEQ
+PaymentInstructionInfo/InstructionCreationDate --> 24/02/2021
+InstructionTotals/PaymentCount --> 2
+InstructionTotals/TotalPaymentAmount --> 1068
+PaymentInstructionInfo/InstructionReferenceNumber --> 63007
+OutboundPayment/PaymentMethod/PaymentMethodInternalID --> DFT    If NEFT --> N   elseIf IFT --> I
+OutboundPayment/SupplierorParty/SupplierNumber --> 20000428
+OutboundPayment/SupplierorParty/Name --> INK STATION
+OutboundPayment/SupplierorParty/AddressLine1 --> 22, Main Road
+                                AddressLine2 --> FC Road
+								AddressLine3 --> ________
+								City --> Pune
+								State --> Maharashtra
+								PostalCode --> 411043
+								
+OutboundPayment/ AXIS BANK LTD

@@ -1,0 +1,43 @@
+PLC@PH@0756034014@PHP@5010.00@@SCOTTS PHILIPPINES INC.@TH TEST SUPPLIER@TH TEST SUPPLIER@BASEMENT123@GLORIETTA@110001@PH@@
+PLC@PH@0757534002@PHP@18420.58@@@18023@@@@@@WJGLOBAL INC.@@@@@@CANON MARKETING (PHILIPPINES), INC.@7F COMMERCE & INDUSTRY PLAZA, 1030 @TAGUIG CITY@1634@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@X@X@X@X@X@@@@@@@C/OR@@@@@@@@@@@@@@@@@@@@@@@
+
+PLC@PH@0756034014@PHP@6040.00@@SCOTTS PHILIPPINES INC.@360 AEVENT MANAGEMENT CORP.@360 AEVENT MANAGEMENT CORP.@ 2F UNIT B2 EASTWOOD CITYWALK@@11001@PH@@
+
+
+
+
+
+<Dbtr><ctry> --> Payer/Address/Country --> PH
+<DbtrAcct><Id><IBAN> --> BankAccount/IBANNumber --> Null ===================
+	- NOTE : (If IBANNumber is null use BankAccountNumber )BankAccount/BankAccountNumber --> 0756034014
+<DbtrAcct><Ccy> --> BankAccount/BankAccountCurrency/Code --> PHP
+<PmtInf><CtrlSum> --> LogicalGrouping/PaymentInformationAmountTotal --> Null  ==================
+	- Another CtrlSum --> Sum -- OutboundPayment/PaymentAmount/Value 
+<PmtInf><PmtInfId> --> PaymentInstructionInfo/InstructionReferenceNumber --> 31010
+<Dbtr><Nm> --> Payer/Name --> Scotts Philippines Inc.
+<Cdtr><Nm> --> SupplierorParty/Name --> TH Test Supplier
+<Cdtr><PstlAdr><StrtNm> --> SupplierorParty/Address/AddressLine1 --> Basement123
+<Cdtr><PstlAdr><TwnNm> --> SupplierorParty/Address/City --> Glorietta
+<Cdtr><PstlAdr><PstCd> --> SupplierorParty/Address/PostalCode --> 110001
+<Cdtr><PstlAdr><Ctry> --> SupplierorParty/Address/Country --> PH  
+<RemitAdviceDeliveryMethod>  =======================
+Payee/TaxRegistrationNumber --> 123456666
+DocumentPayable/DocumentPayableLine/Tax/TaxRateCode --> WE-WI011-10
+DocumentPayable/DocumentPayableLine/Tax/TaxRate --> 10
+TotalDocumentAmount/Value --> 
+DocumentPayableLine/LineGrossAmount/Value --> 
+Payer/LegalEntityRegistrationNumber --> AS095-008251
+<RmtInf><Strd><RfrdDocInf><Nb> --> DocumentNumber/ReferenceNumber 
+<RltdDt> --> DocumentDate
+<RfrdDocAmt> --> TotalDocumentAmount/Value
+<DuePyblAmt> Ccy --> TotalDocumentAmount/Currency/Code
+
+select format(trunc(PaymentDate,'mm'),'mm/dd/yy'),PaymentDate,last_day(PaymentDate) from dual;
+
+FORMAT_DATE(PaymentDate,'MM/01/YY')
+FORMAT_DATE(PaymentDate,'MM/31/YY')
+
+IF FORMAT_DATE(PaymentDate,'MM') IN ('01','03','05','07','08','10','12') THEN FORMAT_DATE(PaymentDate,'MM/31/YY')
+ELSIF FORMAT_DATE(PaymentDate,'MM') IN ('04','06','09','11') THEN FORMAT_DATE(PaymentDate,'MM/30/YY') ELSE '' END IF;
+ELSIF FORMAT_DATE(PaymentDate,'MM') = '02' AND FORMAT_DATE(PaymentDate,'YYYY')%4==0 THEN FORMAT_DATE(PaymentDate,'MM/29/YY') ELSE FORMAT_DATE(PaymentDate,'MM/28/YY')
+END

@@ -61,7 +61,7 @@
   </PmtTpInf>
 <!--End of payment type information block-->
  <ReqdExctnDt>
-  <xsl:value-of select="format(PaymentDate,'YYYY-MM-DD'" /> 
+  <xsl:value-of select="PaymentDate" /> 
   </ReqdExctnDt>
  <Dbtr>
  <Nm>
@@ -192,11 +192,21 @@
   <Ctry>
   <xsl:value-of select="substring(SupplierorParty/Address/Country,1,2)" /> 
   </Ctry>
+  <xsl:if test="not(SupplierorParty/Address/AddressLine1='')">
   <AdrLine>
   <xsl:value-of select="substring(SupplierorParty/Address/AddressLine1,1,70)" />
+  </AdrLine>
+  </xsl:if>
+  <xsl:if test="not(SupplierorParty/Address/AddressLine2='')">
+  <AdrLine>
   <xsl:value-of select="substring(SupplierorParty/Address/AddressLine2,1,70)" />
+  </AdrLine>
+  </xsl:if>
+  <xsl:if test="not(SupplierorParty/Address/AddressLine3='')">
+  <AdrLine>
   <xsl:value-of select="substring(SupplierorParty/Address/AddressLine3,1,70)" />
   </AdrLine>
+  </xsl:if>
   </PstlAdr>
   </Cdtr>
  <CdtrAcct>
@@ -232,19 +242,32 @@
 	 <Ctry>
 	  <xsl:value-of select="substring(SupplierorParty/Address/Country,1,2)" />
 	 </Ctry>
-	 <AdrLine>
-	  <xsl:value-of select="substring(SupplierorParty/Address/AddressLine1,1,70)" />
-	  <xsl:value-of select="substring(SupplierorParty/Address/AddressLine2,1,70)" />
-	  <xsl:value-of select="substring(SupplierorParty/Address/AddressLine3,1,70)" />
-	 </AdrLine>
+	 <xsl:if test="not(SupplierorParty/Address/AddressLine1='')">
+  <AdrLine>
+  <xsl:value-of select="substring(SupplierorParty/Address/AddressLine1,1,70)" />
+  </AdrLine>
+  </xsl:if>
+  <xsl:if test="not(SupplierorParty/Address/AddressLine2='')">
+  <AdrLine>
+  <xsl:value-of select="substring(SupplierorParty/Address/AddressLine2,1,70)" />
+  </AdrLine>
+  </xsl:if>
+  <xsl:if test="not(SupplierorParty/Address/AddressLine3='')">
+  <AdrLine>
+  <xsl:value-of select="substring(SupplierorParty/Address/AddressLine3,1,70)" />
+  </AdrLine>
+  </xsl:if>
 	</Adr>
    </RmtLctnPstlAdr>
   </RltdRmtInf>
   
  <RmtInf>
-<xsl:for-each select="DocumentPayable">
-  <Ustrd>
-   <xsl:text>H1: Invoice Number  Invoice Date  Invoice Total Amount  Invoice Currency  Payment Amount  3: </xsl:text>
+  <xsl:for-each select="DocumentPayable">
+   <Ustrd>
+   <xsl:text>H1: Invoice Number  Invoice Date  Invoice Total Amount  Invoice Currency  Payment Amount</xsl:text>
+   </Ustrd>
+   <Ustrd>
+   <xsl:text>3: </xsl:text>
    <xsl:value-of select=" DocumentNumber/ReferenceNumber " />
    <xsl:text>  </xsl:text>
    <xsl:value-of select=" DocumentDate " />
@@ -254,7 +277,7 @@
    <xsl:value-of select=" TotalDocumentAmount/Currency/Code " />
    <xsl:text>  </xsl:text>
    <xsl:value-of select=" PaymentAmount/Value " />
-  </Ustrd>
+   </Ustrd>
   </xsl:for-each>
  <Strd>
   <Invcr>

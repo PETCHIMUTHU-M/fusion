@@ -1,0 +1,21 @@
+<OutboundPaymentInstruction>
+	<OutboundPayment>
+		<PaymentDate>2020-08-18</PaymentDate>
+		<Payee>
+			<Name>DHL EXPRESS (PHILIPPINES) CORP.</Name>
+			<SupplierNumber>20004268</SupplierNumber>
+		</Payee>
+		<PayeeBankAccount>
+			<BankAccountNumber>100000515</BankAccountNumber>
+		</PayeeBankAccount>
+		<Payer>
+			<Name>Scotts Philippines, Inc.</Name>
+		</Payer>
+		<BankAccount>
+			<BankAccountNumber>0756034014</BankAccountNumber>
+		</BankAccount>
+		<PaymentAmount>
+			<Value>892.5</Value>
+		</PaymentAmount>
+	</OutboundPayment>
+</OutboundPaymentInstruction>

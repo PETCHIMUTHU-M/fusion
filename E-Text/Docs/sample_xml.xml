@@ -1,0 +1,32 @@
+<OutboundPaymentInstruction>
+	<InstructionGrouping>
+		<BankAccount>
+			<BankAccountSuffix>T156</BankAccountSuffix>
+		</BankAccount>
+	</InstructionGrouping>
+	<OutboundPayment>
+		<PaymentMethod>
+			<PaymentMethodInternalID>NEFT</PaymentMethodInternalID>
+		</PaymentMethod>
+		<PaymentDate>2020-08-18</PaymentDate>
+		<SupplierorParty>
+			<Name>DHL EXPRESS (PHILIPPINES) CORP.</Name>
+			<SupplierNumber>20004268</SupplierNumber>
+		</SupplierorParty>
+		<PayeeBankAccount>
+			<BankAccountNumber>100000515</BankAccountNumber>
+		</PayeeBankAccount>
+		<Payer>
+			<Name>Scotts Philippines, Inc.</Name>
+		</Payer>
+		<BankAccount>
+			<BankAccountNumber>0756034014</BankAccountNumber>
+		</BankAccount>
+		<PaymentNumber>
+			<CheckNumber>567389567387</CheckNumber>
+		</PaymentNumber>
+		<PaymentAmount>
+			<Value>892.5</Value>
+		</PaymentAmount>
+	</OutboundPayment>
+</OutboundPaymentInstruction>
